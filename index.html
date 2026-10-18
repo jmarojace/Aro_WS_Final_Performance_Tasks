@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Student registration form with client-side validation.">
+  <title>Student Registration | Bluecrest University</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main class="page-shell">
+    <section class="brand-panel" aria-label="Registration information">
+      <div class="brand-mark" aria-hidden="true">BU</div>
+      <p class="eyebrow">BLUECREST UNIVERSITY</p>
+      <h1>Your next chapter starts here.</h1>
+      <p class="brand-copy">Complete the registration form to create your student profile. Please review your information before submitting.</p>
+      <div class="brand-divider"></div>
+      <div class="trust-item"><span class="trust-icon" aria-hidden="true">✓</span><span>Secure, student-focused registration</span></div>
+      <div class="trust-item"><span class="trust-icon" aria-hidden="true">✓</span><span>Clear guidance at every step</span></div>
+      <div class="brand-footer">STUDENT SERVICES <span>•</span> REGISTRAR'S OFFICE</div>
+    </section>
+
+    <section class="form-panel">
+      <header class="form-header">
+        <div>
+          <p class="eyebrow blue-eyebrow">STUDENT SERVICES</p>
+          <h2>Student Registration</h2>
+          <p class="muted">Fields marked with <span class="required-star">*</span> are required.</p>
+        </div>
+        <div class="step-pill"><span class="step-dot"></span> New student</div>
+      </header>
+
+      <div id="formAlert" class="form-alert" role="status" aria-live="polite" hidden></div>
+
+      <form id="registrationForm" novalidate>
+        <fieldset>
+          <legend><span class="section-number">01</span> Personal information</legend>
+          <div class="form-grid">
+            <div class="field">
+              <label for="studentId">Student ID <span class="required-star">*</span></label>
+              <input id="studentId" name="studentId" type="text" placeholder="e.g. 2026-00123" autocomplete="off" data-label="Student ID" data-required="true">
+              <small class="field-error" id="studentIdError"></small>
+            </div>
+            <div class="field">
+              <label for="fullName">Full name <span class="required-star">*</span></label>
+              <input id="fullName" name="fullName" type="text" placeholder="Enter your full name" autocomplete="name" data-label="Full name" data-required="true">
+              <small class="field-error" id="fullNameError"></small>
+            </div>
+            <div class="field">
+              <label for="email">Email address <span class="required-star">*</span></label>
+              <input id="email" name="email" type="email" placeholder="name@example.com" autocomplete="email" data-label="Email address" data-required="true">
+              <small class="field-error" id="emailError"></small>
+            </div>
+            <div class="field">
+              <label for="phone">Phone number <span class="required-star">*</span></label>
+              <input id="phone" name="phone" type="tel" placeholder="0917-123-4567" autocomplete="tel" inputmode="tel" data-label="Phone number" data-required="true" aria-describedby="phoneHint phoneError">
+              <small class="field-hint" id="phoneHint">Use 09XX-XXX-XXXX or +639XX-XXX-XXXX.</small>
+              <small class="field-error" id="phoneError"></small>
+            </div>
+            <div class="field">
+              <label for="dob">Date of birth <span class="required-star">*</span></label>
+              <input id="dob" name="dob" type="date" autocomplete="bday" data-label="Date of birth" data-required="true">
+              <small class="field-error" id="dobError"></small>
+            </div>
+            <div class="field">
+              <label for="gender">Gender <span class="required-star">*</span></label>
+              <select id="gender" name="gender" data-label="Gender" data-required="true">
+                <option value="">Select gender</option>
+                <option value="Female">Female</option>
+                <option value="Male">Male</option>
+                <option value="Prefer not to say">Prefer not to say</option>
+              </select>
+              <small class="field-error" id="genderError"></small>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend><span class="section-number">02</span> Academic information</legend>
+          <div class="form-grid">
+            <div class="field">
+              <label for="program">Program <span class="required-star">*</span></label>
+              <select id="program" name="program" data-label="Program" data-required="true">
+                <option value="">Choose your program</option>
+                <option value="BS Information Technology">BS Information Technology</option>
+                <option value="BS Computer Science">BS Computer Science</option>
+                <option value="BS Information Systems">BS Information Systems</option>
+                <option value="BS Business Administration">BS Business Administration</option>
+                <option value="BS Hospitality Management">BS Hospitality Management</option>
+                <option value="Other">Other</option>
+              </select>
+              <small class="field-error" id="programError"></small>
+            </div>
+            <div class="field">
+              <label for="yearLevel">Year level <span class="required-star">*</span></label>
+              <select id="yearLevel" name="yearLevel" data-label="Year level" data-required="true">
+                <option value="">Choose year level</option>
+                <option value="1st Year">1st Year</option>
+                <option value="2nd Year">2nd Year</option>
+                <option value="3rd Year">3rd Year</option>
+                <option value="4th Year">4th Year</option>
+                <option value="5th Year">5th Year</option>
+              </select>
+              <small class="field-error" id="yearLevelError"></small>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend><span class="section-number">03</span> Account security</legend>
+          <div class="form-grid">
+            <div class="field">
+              <label for="password">Password <span class="required-star">*</span></label>
+              <div class="password-wrap">
+                <input id="password" name="password" type="password" placeholder="At least 8 characters" autocomplete="new-password" data-label="Password" data-required="true" aria-describedby="passwordHint passwordError">
+                <button class="password-toggle" type="button" data-password-target="password" aria-pressed="false">Show</button>
+              </div>
+              <small class="field-hint" id="passwordHint">Use at least 8 characters, including a letter and a number.</small>
+              <small class="field-error" id="passwordError"></small>
+            </div>
+            <div class="field">
+              <label for="confirmPassword">Confirm password <span class="required-star">*</span></label>
+              <div class="password-wrap">
+                <input id="confirmPassword" name="confirmPassword" type="password" placeholder="Re-enter your password" autocomplete="new-password" data-label="Confirm password" data-required="true">
+                <button class="password-toggle" type="button" data-password-target="confirmPassword" aria-pressed="false">Show</button>
+              </div>
+              <small class="field-error" id="confirmPasswordError"></small>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend><span class="section-number">04</span> Contact and agreement</legend>
+          <div class="field">
+            <label for="address">Home address <span class="required-star">*</span></label>
+            <textarea id="address" name="address" rows="3" placeholder="House number, street, barangay, city/municipality" autocomplete="street-address" data-label="Home address" data-required="true"></textarea>
+            <small class="field-error" id="addressError"></small>
+          </div>
+          <div class="agreement-row">
+            <input id="agreement" name="agreement" type="checkbox" data-label="Agreement" data-required="true">
+            <label for="agreement">I confirm that the information provided is accurate and agree to the school's registration terms. <span class="required-star">*</span></label>
+          </div>
+          <small class="field-error agreement-error" id="agreementError"></small>
+        </fieldset>
+
+        <div class="form-actions">
+          <button type="reset" class="btn btn-secondary" id="resetButton">Reset form</button>
+          <button type="submit" class="btn btn-primary">Submit registration <span aria-hidden="true">→</span></button>
+        </div>
+        <p class="privacy-note"><span aria-hidden="true">🔒</span> Demo form for coursework. Information is validated in your browser and is not sent to a server.</p>
+      </form>
+
+      <footer class="form-footer">© 2026 Bluecrest University · Student Registration Demo</footer>
+    </section>
+  </main>
+</body>
+</html>
