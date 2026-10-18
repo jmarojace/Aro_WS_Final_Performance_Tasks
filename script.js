@@ -1,7 +1,3 @@
-// WS 301 Performance Task: Student Registration Form
-// Concepts demonstrated: events, preventDefault(), trim(), validation,
-// field-specific errors, classList.add/remove/toggle(), dataset, and attributes.
-
 const form = document.getElementById("registrationForm");
 const formAlert = document.getElementById("formAlert");
 const resetButton = document.getElementById("resetButton");
